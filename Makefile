@@ -9,7 +9,7 @@ factoriali:
 	@$(CC) $(CFLAGS) factoriali.c -o factoriali
 
 factorialr:
-	@$(CC) $(CFLAGS) factorailr.c -o factorialr
+	@$(CC) $(CFLAGS) factorialr.c -o factorialr
 
 clean:
 	@rm factoriali factorialr
