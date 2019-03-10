@@ -6,7 +6,7 @@ CFLAGS=-Wall -pedantic -ansi
 all: factoriali factorialr
 
 factoriali:
-	@$(CC) $(CFLAGS) factorial.c -o factoriali
+	@$(CC) $(CFLAGS) factoriali.c -o factoriali
 
 factorialr:
 	@$(CC) $(CFLAGS) factorailr.c -o factorialr
