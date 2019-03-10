@@ -1,7 +1,7 @@
 # (c) Copyright 2019 Bartosz Mierzynski
 
 CC=cc
-CFLAGS=-Wall -pedantic -ansi
+CFLAGS=-Wall -pedantic -std=c11
 
 all: factoriali factorialr
 
