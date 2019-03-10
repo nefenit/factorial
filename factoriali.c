@@ -6,6 +6,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void usage(int status) {
+	fprintf(stderr, "usage: factorial N");
+	exit(status);
+}
+
 unsigned long long factorial_iterative(unsigned long long n) {
 	unsigned long long a = 1;
 	do
@@ -15,6 +20,8 @@ unsigned long long factorial_iterative(unsigned long long n) {
 }
 
 int main(int argc, char **argv) {
+	if(argc != 2)
+		usage(EXIT_FAILURE);
 	printf("%llu\n", factorial_iterative(strtoull(argv[1], NULL, 10)));
-	return 0;
+	return EXIT_SUCCESS;
 }
