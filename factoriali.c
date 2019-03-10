@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 void usage(int status) {
-	fprintf(stderr, "usage: factorial N");
+	fprintf(stderr, "usage: factoriali N");
 	exit(status);
 }
 
