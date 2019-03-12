@@ -14,7 +14,7 @@ void usage(int status) {
 }
 
 ull factorialr(ull n) {
-	return n ? n * factorialr(n-1) : 1;
+	return n ? n * factorialr(n-1) : 1ULL;
 }
 
 int main(int argc, char **argv) {
