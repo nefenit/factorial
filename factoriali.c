@@ -14,9 +14,9 @@ void usage(int status) {
 }
 
 ull factoriali(ull n) {
-	ull i = 1;
+	ull i = 1ULL;
 	if(!n)
-		return 1;
+		return 1ULL;
 	do
 		i *= n;
 	while(--n);
