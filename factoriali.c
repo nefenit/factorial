@@ -6,24 +6,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef unsigned long long ull;
+
 void usage(int status) {
 	fprintf(stderr, "usage: factoriali N\n");
 	exit(status);
 }
 
-unsigned long long factorial_iterative(unsigned long long n) {
-	unsigned long long a = 1;
+ull factoriali(ull n) {
+	ull i = 1;
 	if(!n)
 		return 1;
 	do
-		a *= n;
+		i *= n;
 	while(--n);
-	return a;
+	return i;
 }
 
 int main(int argc, char **argv) {
 	if(argc != 2)
 		usage(EXIT_FAILURE);
-	printf("%llu\n", factorial_iterative(strtoull(argv[1], NULL, 10)));
+	printf("%llu\n", factoriali(strtoull(argv[1], NULL, 10)));
 	return EXIT_SUCCESS;
 }
