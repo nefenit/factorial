@@ -13,6 +13,8 @@ void usage(int status) {
 
 unsigned long long factorial_iterative(unsigned long long n) {
 	unsigned long long a = 1;
+	if(!n)
+		return 1;
 	do
 		a *= n;
 	while(--n);
