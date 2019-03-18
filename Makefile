@@ -11,5 +11,7 @@ factoriali:
 factorialr:
 	@$(CC) $(CFLAGS) factorialr.c -o factorialr
 
+.PHONY: clean
+
 clean:
 	@rm factoriali factorialr
