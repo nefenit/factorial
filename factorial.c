@@ -16,15 +16,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef enum {
+	FORMAT_DECIMAL,
+	FORMAT_OCTAL,
+	FORMAT_HEXADECIMAL,
+	FORMAT_UPPER_HEXADECIMAL,
+} format_t;
+
 void usage(int status) {
 	printf(
 	"usage: %s [OPTION]... [NUMBER]...\n"
 	"Calculates nth factorial or double factorial\n"
-	"Factorial iteratively by default\n"
+	"Factorial iteratively decimaly by default\n"
 	"  -i NUMBER, --iterative=NUMBER\n"
 	"  -r NUMBER, --recursive=NUMBER\n"
 	"  -I NUMBER, --double-iterative=NUMBER\n"
 	"  -R NUMBER, --double-recursive=NUMBER\n"
+	"  -d, --decimal\n"	
+	"  -o, --octal\n"	
+	"  -x, --hexadecimal\n"
+	"  -X, --upper-hexadecimal\n"
 	"  -h, --help\n"
 	"  -v, --version\n",
 	PROGRAM_NAME);
@@ -80,30 +91,53 @@ uintmax_t factoriali(uintmax_t n) {
 
 int main(int argc, char **argv) {
 	int c;
+	format_t format = FORMAT_DECIMAL;
+	const char formats[] = {
+		"%" PRIuMAX "\n",
+		"%" PRIoMAX "\n",
+		"%" PRIxMAX "\n",
+		"%" PRIXMAX "\n",
+	};
 	const struct option longopts[] = {
-	{"iterative",        required_argument, NULL, 'i'},
-	{"recursive",        required_argument, NULL, 'r'},
-	{"double-iterative", required_argument, NULL, 'I'},
-	{"double-recursive", required_argument, NULL, 'R'},
-	{"help",             no_argument,       NULL, 'h'},
-	{"version",          no_argument,       NULL, 'v'},
-	{NULL,               0,                 NULL, 0}
+	{"iterative",         required_argument, NULL, 'i'},
+	{"recursive",         required_argument, NULL, 'r'},
+	{"double-iterative",  required_argument, NULL, 'I'},
+	{"double-recursive",  required_argument, NULL, 'R'},
+	{"decimal",           no_argument,       NULL, 'd'},
+	{"octal",             no_argument,       NULL, 'o'},
+	{"hexadecimal",       no_argument,       NULL, 'x'},
+	{"upper-hexadecimal", no_argument,       NULL, 'X'},
+	{"help",              no_argument,       NULL, 'h'},
+	{"version",           no_argument,       NULL, 'v'},
+	{NULL,                0,                 NULL, 0}
 	};
 
-	while ((c = getopt_long(argc, argv, "i:r:I:R:hv", longopts, NULL)) != -1) {
+	while ((c = getopt_long(argc, argv, "i:r:I:R:doxXhv", longopts, NULL)) != -1) {
 		switch (c) {
 		case 'i':
-			printf("%" PRIdMAX "\n", factoriali(strtoull(optarg, NULL, 0)));
+			printf(formats[format], factoriali(strtoull(optarg, NULL, 0)));
 			break;
 		case 'r':
-			printf("%" PRIdMAX "\n", factorialr(strtoull(optarg, NULL, 0)));
+			printf(formats[format], factorialr(strtoull(optarg, NULL, 0)));
 			break;
 		case 'I':
-			printf("%" PRIdMAX "\n", doublefactoriali(strtoull(optarg, NULL, 0)));
+			printf(formats[format], doublefactoriali(strtoull(optarg, NULL, 0)));
 			break;
 		case 'R':
-			printf("%" PRIdMAX "\n", doublefactorialr(strtoull(optarg, NULL, 0)));
-			break;				
+			printf(formats[format], doublefactorialr(strtoull(optarg, NULL, 0)));
+			break;
+		case 'd':
+			format = FORMAT_DECIMAL;
+			break;
+		case 'o':
+			format = FORMAT_OCTAL;
+			break;
+		case 'x':
+			format = FORMAT_HEXADECIMAL;
+			break;
+		case 'X':
+			format = FORMAT_UPPER_HEXADECIMAL;
+			break;
 		case 'h':
 			usage(EXIT_SUCCESS);
 			break;
