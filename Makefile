@@ -1,7 +1,7 @@
 # (c) Copyright 2019 Bartosz Mierzynski
 
 CC=cc
-CFLAGS=-Wall -pedantic -std=c11 -O2 -g
+CFLAGS=-Wall -pedantic -std=c99 -O2 -g
 
 .PHONY: all
 all: 
