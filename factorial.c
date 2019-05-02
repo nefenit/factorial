@@ -92,7 +92,7 @@ uintmax_t factoriali(uintmax_t n) {
 int main(int argc, char **argv) {
 	int c;
 	format_t format = FORMAT_DECIMAL;
-	const char formats[] = {
+	const char* formats[] = {
 		"%" PRIuMAX "\n",
 		"%" PRIoMAX "\n",
 		"%" PRIxMAX "\n",
@@ -154,7 +154,7 @@ int main(int argc, char **argv) {
 	argv += optind;
 
 	for(; argc; --argc, ++argv)
-		printf("%" PRIdMAX "\n", factoriali(strtoull(*argv, NULL, 0)));
+		printf(formats[format], factoriali(strtoull(*argv, NULL, 0)));
 
 	return EXIT_SUCCESS;
 }
