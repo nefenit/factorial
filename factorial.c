@@ -1,6 +1,5 @@
 /* factorial.c - calculates nth factorial or double factorial
  * (c) Copyright 2019 Bartosz Mierzynski
- * Written in C11
  */
 
 #define PROGRAM_NAME         "factorial"
