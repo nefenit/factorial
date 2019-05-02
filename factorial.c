@@ -67,6 +67,7 @@ uintmax_t doublefactoriali(uintmax_t n) {
 
 uintmax_t factoriali(uintmax_t n) {
 	uintmax_t i = 1ULL;
+	
 	if(!n)
 		return i;
 	
