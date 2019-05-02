@@ -39,8 +39,7 @@ void version(void) {
 	"There is NO WARRANTY, to the extent permitted by law.\n",
 	PROGRAM_NAME, PROGRAM_VERSION,
 	COPYRIGHT_YEAR, COPYRIGHT_HOLDER,
-	LICENSE_ABBREVIATION, LICENSE_LINE
-	);
+	LICENSE_ABBREVIATION, LICENSE_LINE);
 	exit(EXIT_SUCCESS);
 }
 
@@ -54,22 +53,27 @@ uintmax_t factorialr(uintmax_t n) {
 
 uintmax_t doublefactoriali(uintmax_t n) {
 	uintmax_t i = 1ULL;
+	
 	if(n < 2)
-		return 1ULL;
+		return i;
+	
 	do {
 		i *= n;
 		n -= 2;
 	} while(n > 1);
+	
 	return i;
 }
 
 uintmax_t factoriali(uintmax_t n) {
 	uintmax_t i = 1ULL;
 	if(!n)
-		return 1ULL;
+		return i;
+	
 	do
 		i *= n;
 	while(--n);
+	
 	return i;
 }
 
