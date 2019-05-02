@@ -1,4 +1,4 @@
-/* factorial.c - calculates nth factorial
+/* factorial.c - calculates nth factorial or double factorial
  * (c) Copyright 2019 Bartosz Mierzynski
  * Written in C11
  */
@@ -56,10 +56,10 @@ uintmax_t doublefactoriali(uintmax_t n) {
 	uintmax_t i = 1ULL;
 	if(n < 2)
 		return 1ULL;
-	do
+	do {
 		i *= n;
 		n -= 2;
-	while(n > 1);
+	} while(n > 1);
 	return i;
 }
 
@@ -114,15 +114,8 @@ int main(int argc, char **argv) {
 	argc -= optind;
 	argv += optind;
 
-	if(argc) {
-		while(argc) {	
-			printf("%" PRIdMAX "\n", factoriali(strtoull(*argv, NULL, 0)));
-			--argc;
-			++argv;
-		}
-	} else {
-		usage(EXIT_FAILURE);
-	}
+	for(; argc; --argc, ++argv)
+		printf("%" PRIdMAX "\n", factoriali(strtoull(*argv, NULL, 0)));
 
 	return EXIT_SUCCESS;
 }
