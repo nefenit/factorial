@@ -3,15 +3,10 @@
 CC=cc
 CFLAGS=-Wall -pedantic -std=c11 -O2 -g
 
-all: factoriali factorialr
-
-factoriali:
-	@$(CC) $(CFLAGS) factoriali.c -o factoriali
-
-factorialr:
-	@$(CC) $(CFLAGS) factorialr.c -o factorialr
+.PHONY: all
+all: 
+	@$(CC) factorial.c -o factorial $(CFLAGS) 
 
 .PHONY: clean
-
 clean:
-	@rm factoriali factorialr
+	@rm factorial
