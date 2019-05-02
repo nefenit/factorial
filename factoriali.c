@@ -19,6 +19,7 @@
 void usage(int status) {
 	printf(
 	"usage: %s [OPTION]... [NUMBER]...\n"
+	"Calculates nth factorial"
 	"  -i NUMBER, --iterative=NUMBER \n"
 	"  -r NUMBER, --recursive=NUMBER \n"
 	"  -h, --help\n"
