@@ -27,6 +27,7 @@ void usage(int status) {
 	PROGRAM_NAME);
 	exit(status);
 }
+
 void version(void) {
 	printf("%s %s\n"
 	"Copyright (C) %s %s\n"
@@ -39,6 +40,7 @@ void version(void) {
 	);
 	exit(EXIT_SUCCESS);
 }
+
 uintmax_t factorialr(uintmax_t n) {
 	return n ? n * factorialr(n-1) : 1ULL;
 }
