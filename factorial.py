@@ -78,20 +78,15 @@ def factoriali(n):
         n -= 1
     return i
 
-def print_format(fmt, num):
-    if(fmt == Format.octal):
-        print("{:o}".format(num))
-    elif(fmt == Format.hexadecimal):
-        print("{:x}".format(num))
-    elif(fmt == Format.upper_hexadecimal):
-        print("{:X}".format(num))
-    elif(fmt == Format.binary):
-        print("{:b}".format(num))
-    elif(fmt == Format.decimal):
-        print("{:d}".format(num))
-
 def main():
     fmt = Format.decimal
+    formats = [
+            "{:d}",        
+            "{:o}",        
+            "{:x}",        
+            "{:X}",        
+            "{:b}",        
+    ]
     longopts = [
         "iterative=",
         "recursive=",
@@ -112,13 +107,13 @@ def main():
         usage(1)
     for o, a in opts:
         if o in ("-i", "--iterative"):
-                print_format(fmt, factoriali(int(a)))
+                print(formats[fmt.value].format(factoriali(int(a))))
         elif o in ("-r", "--recursive"):
-                print_format(fmt, factorialr(int(a)))
+                print(formats[fmt.value].format(factorialr(int(a))))
         elif o in ("-I", "--double-iterative"):
-                print_format(fmt, doublefactoriali(int(a)))
+                print(formats[fmt.value].format(doublefactoriali(int(a))))
         elif o in ("-R", "--double-recursive"):
-                print_format(fmt,doublefactorialr(int(a)))
+                print(formats[fmt.value].format(doublefactorialr(int(a))))
         elif o in ("-d", "--decimal"):
                 fmt = Format.decimal
         elif o in ("-o", "--octal"):
@@ -136,7 +131,7 @@ def main():
         else:
                 usage(1)
     for a in args:
-        print_format(fmt, factoriali(int(a)))
+        print(formats[fmt.value].format(factoriali(int(a))))
     return 0
 
 if __name__ == "__main__":
