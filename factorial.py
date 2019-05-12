@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 '''
 factorial.c - calculates nth factorial or double factorial
  (c) Copyright 2019 Bartosz Mierzynski
