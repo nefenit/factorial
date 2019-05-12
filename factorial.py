@@ -9,12 +9,12 @@ from sys    import argv, exit
 from enum   import Enum
 from getopt import gnu_getopt
 
-program_name         = "factorial"
-program_version      = "1.0"
-copyright_year       = "2019"
-copyright_holder     = "Bartosz Mierzynski"
-license_abbreviation = ""
-license_line         = ""
+program_name  = "factorial"
+__author__    = "Bartosz Mierzynski"
+__version__   = "1.0"
+__copyright__ = "Copyright (C) 2019 Bartosz Mierzynski"
+__license__   = ""
+license_line  = ""
 
 class Format(Enum):
     decimal           = 0
@@ -42,13 +42,13 @@ def usage(status):
 
 def version(status):
     print("{:s} {:s}\n"
-    "Copyright (C) {:s} {:s}\n"
+    "{:s}\n"
     "License {:s}: {:s}\n"
     "This is free software: you are free to change and redistribute it.\n"
     "There is NO WARRANTY, to the extent permitted by law.".format(
-    program_name, program_version,
-    copyright_year, copyright_holder,
-    license_abbreviation, license_line))
+    program_name, __version__,
+    __copyright__,
+    __license__, license_line))
     exit(status)
 
 def doublefactorialr(n):
